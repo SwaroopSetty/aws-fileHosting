@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Python Flask File Upload Application</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/stylesheets/style.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Login</h3>
+      </div>
+      <hr/>
+      <div>
+      
+      <form action="login" method="post">
+        Enter name
+        <input type="text" name="name"><br /><br />
+        Enter Password
+        <input type="text" name="password"><br /><br />
+        <input type="submit" value="Submit">
+      </form>
+      </div>
+
+      <div class="header">
+          <h3 class="text-muted">Register</h3>
+      </div>
+      <hr/>
+      <div>
+      <form action="register" method="post">
+        Enter name
+        <input type="text" name="name_reg"><br /><br />
+        Enter Password
+        <input type="text" name="password_reg"><br /><br />
+        <input type="submit" value="Register">
+      </form>
+      </div>
+
+    </div>
+  </body>
+
+</html>

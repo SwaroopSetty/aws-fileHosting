@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Python Flask Application</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/home/ubuntu/flaskapp/templates/stylesheets/style.css">
+    </head>
+    <body>
+        <div class="container">
+        <div class="header">
+            <h3 class="text-muted">Upload a File</h3>
+        </div>
+        <hr/>
+        <div>
+            
+            <form action="upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file"><br /><br />
+                <input type="submit" value="Upload">
+                <input type="hidden" name="bucketName" value="{{bucketName}}">
+            </form>
+        </div>
+
+        <div class="header">
+            <h3 class="text-muted">Download a File</h3>
+        </div>
+        <hr/>
+        <div>
+            {% block body %}
+            <ul class=L>
+                {% for i in L %}
+                <form action="download" method="post">
+                    <table style="width:12%">
+                        <td>{{ i.fileName }}</td><td>{{ i.fileSize|safe }}</td><td>{{ i.lastModified|safe }}</td>
+                        <input type="hidden" name="fileID" value="{{i.fileName}}">
+                        <input type="hidden" name="bucketName" value="{{bucketName}}">
+                        <td align="right"><input type="submit" value="Download"></td>
+                    </table>
+                    <br>
+                </form>
+                {% endfor %}
+            </ul>
+            {% endblock %}
+        </div>
+
+        <div class="header">
+            <h3 class="text-muted">Delete a File</h3>
+        </div>
+        <hr/>
+        <div>
+            {% for i in L %}
+            <form action="delete" method="post">
+                <table style="width:12%">
+                    <td>{{ i.fileName }}</td><td>{{ i.fileSize|safe }}</td><td>{{ i.lastModified|safe }}</td>
+                    <input type="hidden" name="fileID" value="{{i.fileName}}">
+                    <input type="hidden" name="bucketName" value="{{bucketName}}">
+                    <td align="right"><input type="submit" value="Delete"></td>
+                </table>
+                <br>
+            </form>
+            {% endfor %}
+        </div>
+    </body>
+</html>
